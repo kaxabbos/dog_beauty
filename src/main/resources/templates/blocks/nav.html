@@ -1,0 +1,29 @@
+<nav th:fragment="nav" class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(var(--bs-orange), #f7f769);">
+    <div class="container"><a class="navbar-brand logo" href="/"  style="color: var(--bs-black);">dog beauty</a>
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav">
+            <span class="visually-hidden">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/" style="color: var(--bs-black);">Услуги</a></li>
+                <li th:if="${role == 'ADMIN'}" class="nav-item"><a class="nav-link" href="/category" style="color: var(--bs-black);">Категории услуг</a></li>
+                <li th:if="${role == 'MASTER'}" class="nav-item"><a class="nav-link" href="/master" style="color: var(--bs-black);">Мой профиль</a></li>
+                <li th:if="${role != 'NOT'}" class="nav-item"><a class="nav-link" href="/masters" style="color: var(--bs-black);">Грумеры</a></li>
+                <li th:if="${role == 'MASTER' or role == 'CLIENT'}" class="nav-item"><a class="nav-link" href="/notes/my" style="color: var(--bs-black);">Мои записи</a></li>
+                <li th:if="${role == 'MASTER'}" class="nav-item"><a class="nav-link" href="/notes/add" style="color: var(--bs-black);">Добавить</a></li>
+                <li th:if="${role == 'ADMIN'}" class="nav-item"><a class="nav-link" href="/stats" style="color: var(--bs-black);">Статистика</a></li>
+                <li th:if="${role == 'ADMIN'}" class="nav-item"><a class="nav-link" href="/users" style="color: var(--bs-black);">Пользователи</a></li>
+                <li th:if="${role == 'NOT'}" class="nav-item"><a class="nav-link" href="/login" style="color: var(--bs-black);">Вход</a></li>
+                <li th:if="${role == 'NOT'}" class="nav-item"><a class="nav-link" href="/reg" style="color: var(--bs-black);">Регистрация</a></li>
+                <li th:if="${role != 'NOT'}" class="nav-item">
+                    <form action="/logout" method="post">
+                        <button class="btn btn-dark" type="submit" style="color: var(--bs-navbar-color);font-weight: bold;">
+                            Выход
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
